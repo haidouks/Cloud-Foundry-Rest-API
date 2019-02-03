@@ -61,8 +61,14 @@ Browse url `http://localhost:8080` on your favorite browser.
 * List Buildpacks   : `GET /buildpacks`
 * Space Service Binding's Detail: `GET /spaces/<space_name>/service_bindings/<service_binding_name>`
 * List Service Keys: `GET /service_keys`
+* Get CF Api Url: `POST /api_url`
 
-## Note:
+## Examples:
+
+### Example 1
 For the secure methods, token should be specified in header.
-### Example
 `curl http://localhost:8080/spaces/mySpace/apps/myApp/summary -H "Authorization  : token DevOps123"`
+
+### Example 2
+For getting any CF Api Url, full path of the api should be provided. 
+`curl http://localhost:8080/api_url -d "url=http://api.run.pivotal.io/v2/spaces/add2e0a1-afbd-4166-a515-78f4fbf3279d" -X POST -H "Authorization  : token DevOps123"`

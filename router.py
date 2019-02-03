@@ -146,6 +146,12 @@ def get_metrics_urls(org_name):
 def get_organizations(org_name=None):
     return json.dumps(Clients.pcf_client.get_org(org_name))
 
+@auth.login_required
+@app.route("/api_url", methods=['POST'])
+def get_api_url():
+    cf_api_url = request.form['url']
+    result = Clients.pcf_client.get_url(cf_api_url)
+    return json.dumps(json.loads(result.content))
 
 #@app.before_request
 #def log_request_info():
